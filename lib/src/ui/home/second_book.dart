@@ -14,37 +14,42 @@ class SecondBook extends StatelessWidget {
   Widget build(BuildContext context) {
     FlipBookControllers buildFlipBookControllers =
         Provider.of<FlipBookControllers>(context);
-    return Column(mainAxisSize: MainAxisSize.min, children: [
-      AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Row(mainAxisSize: MainAxisSize.min, children: [
-          FlipBookToolbarItemFullscreen(
-                  buildFlipBookControllers.flipBookControllerEN,
-                  flipBookToolbarItemsConfigEN)
-              .child,
-          FlipBookToolbarItemCover(
-                  buildFlipBookControllers.flipBookControllerEN,
-                  flipBookToolbarItemsConfigEN)
-              .child,
-          FlipBookToolbarItemPrev(buildFlipBookControllers.flipBookControllerEN,
-                  flipBookToolbarItemsConfigEN)
-              .child,
-          FlipBookToolbarItemNext(buildFlipBookControllers.flipBookControllerEN,
-                  flipBookToolbarItemsConfigEN)
-              .child,
-          FlipBookToolbarItemTOC(buildFlipBookControllers.flipBookControllerEN,
-                  flipBookToolbarItemsConfigEN, 5)
-              .child,
-        ]),
-      ),
-      Expanded(
-        child: FlipBook.builder(
-          controller: buildFlipBookControllers.flipBookControllerEN,
-          pageBuilder: enPageBuilder,
-          // padding: const EdgeInsets.symmetric(vertical: 10),
-        ),
-      )
-    ]);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // AppBar(
+        //   automaticallyImplyLeading: false,
+        //   centerTitle: true,
+        //   // title: Row(mainAxisSize: MainAxisSize.min, children: [
+        //   //   FlipBookToolbarItemFullscreen(
+        //   //           buildFlipBookControllers.flipBookControllerEN,
+        //   //           flipBookToolbarItemsConfigEN)
+        //   //       .child,
+        //   //   FlipBookToolbarItemCover(
+        //   //           buildFlipBookControllers.flipBookControllerEN,
+        //   //           flipBookToolbarItemsConfigEN)
+        //   //       .child,
+        //   //   FlipBookToolbarItemPrev(buildFlipBookControllers.flipBookControllerEN,
+        //   //           flipBookToolbarItemsConfigEN)
+        //   //       .child,
+        //   //   FlipBookToolbarItemNext(buildFlipBookControllers.flipBookControllerEN,
+        //   //           flipBookToolbarItemsConfigEN)
+        //   //       .child,
+        //   //   FlipBookToolbarItemTOC(buildFlipBookControllers.flipBookControllerEN,
+        //   //           flipBookToolbarItemsConfigEN, 5)
+        //   //       .child,
+        //   // ]),
+        // ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,
+          child: FlipBook.builder(
+            axis: Axis.vertical,
+            controller: buildFlipBookControllers.flipBookControllerEN,
+            pageBuilder: enPageBuilder,
+            // padding: const EdgeInsets.symmetric(vertical: 10),
+          ),
+        )
+      ],
+    );
   }
 }
